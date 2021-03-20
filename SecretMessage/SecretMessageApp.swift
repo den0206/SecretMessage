@@ -17,10 +17,12 @@ struct SecretMessageApp: App {
         FirebaseApp.configure()
     }
     var userInfo = UserInfo()
+    var network = NetMonitor()
     
     var body: some Scene {
         WindowGroup {
-            RootView().environmentObject(userInfo)
+            MainMenuView()
+.environmentObject(userInfo).environmentObject(network)
         }
     }
 }

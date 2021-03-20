@@ -10,6 +10,15 @@ import SwiftUI
 struct SignUpView: View {
     
     @State private var user = AuthUserViewModel()
+    @EnvironmentObject var userInfo : UserInfo
+    @EnvironmentObject var monitor : NetMonitor
+    
+    @State private var errorMessage = "" {
+        didSet {
+            showAlert = true
+        }
+    }
+    @State private var showAlert = false
     @Environment(\.presentationMode) var presentationMode
     
     @State private var showPicker = false
@@ -52,14 +61,42 @@ struct SignUpView: View {
             
             TextFiedsArea(user: $user)
             
-            CustomButton(tilte: "Register", disable: user.isSignupComplete, action: {})
+            CustomButton(tilte: "Register", disable: user.isSignupComplete && monitor.isActive, action: {registerUser()})
                 .padding()
+                .alert(isPresented: $showAlert) {
+                    errorAlert(message: errorMessage)
+                }
+            
+            
+            ValitaionText(text: "No InterNet", confirm: !monitor.isActive)
+            
             
             Spacer()
         }
         
         .navigationBarHidden(true)
     }
+    
+    private func registerUser() {
+        
+        guard monitor.isActive else {return}
+        
+        FBAuth.createUser(email: user.email, name: user.fullname, searchId: user.searchID, password: user.password, imageData: user.imageData) { (result) in
+            
+            switch result {
+            
+            case .success(let user):
+                self.userInfo.user = user
+                self.userInfo.isUserAuthenticated = .signIn
+
+            case .failure(let error):
+                self.errorMessage = error.localizedDescription
+            }
+        }
+       
+        
+    }
+
 }
 
 //MARK: - Textfields

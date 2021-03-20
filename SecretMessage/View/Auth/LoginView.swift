@@ -8,17 +8,9 @@
 import SwiftUI
 
 struct LoginView: View {
-    
-    enum viewSheet : Identifiable {
-        case signUp, resetPassword
-        
-        var id : Int {
-            hashValue
-        }
-    }
-    
+
     @State private var user = AuthUserViewModel()
-    
+    @EnvironmentObject var monitor : NetMonitor
     
     var body: some View {
         NavigationView {
@@ -44,7 +36,7 @@ struct LoginView: View {
                 
                 VStack {
                     
-                    CustomButton(tilte: "Login", disable: user.isLoginComplete, action: {})
+                    CustomButton(tilte: "Login", disable: user.isLoginComplete && monitor.isActive, action: {loginUser()})
                     
                     NavigationLink(
                         destination: SignUpView(),
@@ -55,6 +47,8 @@ struct LoginView: View {
                   
                 }
                 
+                ValitaionText(text: "No InterNet", confirm: !monitor.isActive)
+
                 Spacer()
                 
             }
@@ -64,6 +58,23 @@ struct LoginView: View {
         }
     
     }
+    
+    private func loginUser() {
+        
+        guard monitor.isActive else {return}
+        
+        FBAuth.loginUser(email: user.email, password: user.password) { (result) in
+            
+            switch result {
+            
+            case .success(let uid):
+                print("Success\(uid)")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
 }
 
 struct LoginView_Previews: PreviewProvider {

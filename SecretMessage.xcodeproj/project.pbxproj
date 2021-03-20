@@ -23,6 +23,11 @@
 		3A893A2D2604E208000FF591 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A893A2C2604E208000FF591 /* Preview Assets.xcassets */; };
 		3A893A3A2604E26A000FF591 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A893A392604E26A000FF591 /* LoginView.swift */; };
 		3A893A3E2604E307000FF591 /* AuthUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A893A3D2604E307000FF591 /* AuthUserViewModel.swift */; };
+		3AC5F06D2605905C009B2CEF /* FBAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5F06C2605905C009B2CEF /* FBAuth.swift */; };
+		3AC5F07426059B6C009B2CEF /* NWPathMonitor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC5F07326059B6C009B2CEF /* NWPathMonitor+.swift */; };
+		3AC9B53E2605C11400D4BF35 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9B53D2605C11400D4BF35 /* MainMenuView.swift */; };
+		3AC9B5422605CE0500D4BF35 /* RecentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9B5412605CE0500D4BF35 /* RecentsView.swift */; };
+		3AC9B5462605CF0200D4BF35 /* SearchUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9B5452605CF0200D4BF35 /* SearchUserView.swift */; };
 		F5F5F083CCF4E3586B59A77D /* Pods_SecretMessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 046B928E3BEB76F9814BDE8E /* Pods_SecretMessage.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +51,11 @@
 		3A893A2E2604E208000FF591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A893A392604E26A000FF591 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3A893A3D2604E307000FF591 /* AuthUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserViewModel.swift; sourceTree = "<group>"; };
+		3AC5F06C2605905C009B2CEF /* FBAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAuth.swift; sourceTree = "<group>"; };
+		3AC5F07326059B6C009B2CEF /* NWPathMonitor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NWPathMonitor+.swift"; sourceTree = "<group>"; };
+		3AC9B53D2605C11400D4BF35 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		3AC9B5412605CE0500D4BF35 /* RecentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsView.swift; sourceTree = "<group>"; };
+		3AC9B5452605CF0200D4BF35 /* SearchUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserView.swift; sourceTree = "<group>"; };
 		B36CE6E69AF046264EEBFCDE /* Pods-SecretMessage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecretMessage.release.xcconfig"; path = "Target Support Files/Pods-SecretMessage/Pods-SecretMessage.release.xcconfig"; sourceTree = "<group>"; };
 		CD80F4BBB6B1D02155065D32 /* Pods-SecretMessage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecretMessage.debug.xcconfig"; path = "Target Support Files/Pods-SecretMessage/Pods-SecretMessage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +75,7 @@
 		3A19BDE22605831F004FED17 /* CommonFB */ = {
 			isa = PBXGroup;
 			children = (
+				3AC5F06C2605905C009B2CEF /* FBAuth.swift */,
 				3A19BDE326058348004FED17 /* FBCommon.swift */,
 			);
 			path = CommonFB;
@@ -116,8 +127,11 @@
 		3A893A352604E21B000FF591 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3A893A382604E23A000FF591 /* Auth */,
 				3A19BDD2260577E2004FED17 /* RootView.swift */,
+				3AC9B53D2605C11400D4BF35 /* MainMenuView.swift */,
+				3A893A382604E23A000FF591 /* Auth */,
+				3AC9B5402605CDD900D4BF35 /* Message */,
+				3AC9B5442605CEE400D4BF35 /* User */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -156,8 +170,25 @@
 				3A19BDDF26058163004FED17 /* Constracts.swift */,
 				3A19BDE7260583DF004FED17 /* FirebaseReference.swift */,
 				3A19BDEA26058427004FED17 /* CustomError.swift */,
+				3AC5F07326059B6C009B2CEF /* NWPathMonitor+.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		3AC9B5402605CDD900D4BF35 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				3AC9B5412605CE0500D4BF35 /* RecentsView.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		3AC9B5442605CEE400D4BF35 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				3AC9B5452605CF0200D4BF35 /* SearchUserView.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		7A80CB153BEEC1FE456159ED /* Frameworks */ = {
@@ -293,15 +324,20 @@
 			files = (
 				3A19BDE426058348004FED17 /* FBCommon.swift in Sources */,
 				3A40F12A2604E52C00FC662E /* CustomView.swift in Sources */,
+				3AC9B53E2605C11400D4BF35 /* MainMenuView.swift in Sources */,
+				3AC9B5462605CF0200D4BF35 /* SearchUserView.swift in Sources */,
 				3A19BDEB26058427004FED17 /* CustomError.swift in Sources */,
 				3A19BDE026058163004FED17 /* Constracts.swift in Sources */,
+				3AC5F07426059B6C009B2CEF /* NWPathMonitor+.swift in Sources */,
 				3A893A3A2604E26A000FF591 /* LoginView.swift in Sources */,
+				3AC5F06D2605905C009B2CEF /* FBAuth.swift in Sources */,
 				3A893A262604E206000FF591 /* SecretMessageApp.swift in Sources */,
 				3A893A3E2604E307000FF591 /* AuthUserViewModel.swift in Sources */,
 				3A19BDDA26058037004FED17 /* UserInfo.swift in Sources */,
 				3A19BDD3260577E2004FED17 /* RootView.swift in Sources */,
 				3A19BDDD260580F6004FED17 /* FBUser.swift in Sources */,
 				3A19BDD02605749D004FED17 /* SignUpView.swift in Sources */,
+				3AC9B5422605CE0500D4BF35 /* RecentsView.swift in Sources */,
 				3A19BDE8260583DF004FED17 /* FirebaseReference.swift in Sources */,
 				3A40F12E2604E8AB00FC662E /* GlobalExtensions.swift in Sources */,
 			);

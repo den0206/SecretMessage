@@ -18,6 +18,8 @@ final class UserInfo : ObservableObject {
     @Published var listnerHandle : AuthStateDidChangeListenerHandle?
     @Published var user : FBUser = .init(uid : "", name : "", email : "", fcmToken: "", searchId: "")
     
+    @Published var selectMenuIndex = 0
+    
     func configureStateDidchange() {
         
         listnerHandle = Auth.auth().addStateDidChangeListener({ (_, user) in
