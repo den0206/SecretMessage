@@ -21,35 +21,48 @@ struct LoginView: View {
     
     
     var body: some View {
-        VStack(spacing :8) {
+        NavigationView {
             
-            Spacer()
-            
-            CustomTextField(text: $user.email, placeholder: "Email", imageName: "envelope")
-            
-            CustomTextField(text:$user.password, placeholder: "Pasword", imageName: "lock",isSecure: true)
-            
-            HStack {
+            VStack(spacing :8) {
+                
                 Spacer()
                 
-                Button(action: {}) {
-                    Text("Reset Password")
-                        .foregroundColor(.primary)
+                CustomTextField(text: $user.email, placeholder: "Email", imageName: "envelope")
+                
+                CustomTextField(text:$user.password, placeholder: "Pasword", imageName: "lock",isSecure: true)
+                
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {}) {
+                        Text("Reset Password")
+                            .foregroundColor(.primary)
+                    }
                 }
-            }
-            .padding(.vertical)
-            .padding(.trailing,10)
-            
-            VStack {
+                .padding(.vertical)
+                .padding(.trailing,10)
                 
-                CustomButton(tilte: "Login", disable: user.isLoginComplete, action: {})
+                VStack {
+                    
+                    CustomButton(tilte: "Login", disable: user.isLoginComplete, action: {})
+                    
+                    NavigationLink(
+                        destination: SignUpView(),
+                        label: {
+                            CustomButton(tilte: "SignUp", disable: true, backColor: .blue)
+                                .disabled(true)
+                        })
+                  
+                }
                 
-                CustomButton(tilte: "SignUp", disable: true, backColor: .blue, action: {})
+                Spacer()
+                
             }
             
-            Spacer()
-            
+            //MARK: - Navigation property
+            .navigationBarHidden(true)
         }
+    
     }
 }
 

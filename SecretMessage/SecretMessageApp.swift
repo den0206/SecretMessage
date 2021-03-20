@@ -6,14 +6,22 @@
 //
 
 import SwiftUI
+import Firebase
 
 public var testMode = true
 
 @main
 struct SecretMessageApp: App {
+    
+    init() {
+        FirebaseApp.configure()
+    }
+    var userInfo = UserInfo()
+    
     var body: some Scene {
         WindowGroup {
-           LoginView()
+            RootView().environmentObject(userInfo)
         }
     }
 }
+
