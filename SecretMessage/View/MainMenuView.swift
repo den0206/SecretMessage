@@ -20,12 +20,9 @@ struct MainMenuView: View {
             case 0 :
                 RecentsView()
             case 1 :
-                Text("users")
-            case  2 :
-                Text("settings")
+                SettingView()
             default:
-                Color.white
-                Text("No View")
+                BlankView()
             }
             
             MenuArea()
@@ -38,6 +35,7 @@ struct MenuArea : View {
     @EnvironmentObject var userInfo : UserInfo
 
     var body: some View {
+      
         VStack {
             Spacer()
             HStack {
@@ -46,8 +44,7 @@ struct MenuArea : View {
                 ExpandingButton(primaryButton: ExpandingButtonItem(imageName: "plus", action: nil),
                                 secoundaryItems: [
                                     ExpandingButtonItem(imageName: "message",  action: {userInfo.selectMenuIndex = 0}),
-                                    ExpandingButtonItem(imageName: "person.crop.circle",  action: {userInfo.selectMenuIndex = 1}),
-                                    ExpandingButtonItem(imageName: "gearshape",  action: {userInfo.selectMenuIndex = 2}),   ])
+                                    ExpandingButtonItem(imageName: "gearshape",  action: {userInfo.selectMenuIndex = 1}),   ])
             }
             .padding()
         }

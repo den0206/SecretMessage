@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 struct FBUser {
     
@@ -18,6 +19,13 @@ struct FBUser {
     var searchId : String
     
     var avatarUrl : URL?
+    
+    var isCurrentUser : Bool {
+        return Auth.auth().currentUser?.uid == uid
+    }
+    static func currentUID() -> String? {
+        return Auth.auth().currentUser?.uid
+    }
     
     init(uid : String,name : String,email : String,fcmToken : String,searchId : String) {
         

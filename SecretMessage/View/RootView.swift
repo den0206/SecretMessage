@@ -13,16 +13,16 @@ struct RootView: View {
     
     var body: some View {
         Group {
-            MainMenuView()
-//            switch userInfo.isUserAuthenticated {
-//
-//            case .undefined :
-//                ProgressView()
-//            case .signOut :
-//                LoginView()
-//            case .signIn :
-//                MainMenuView()
-//            }
+          
+            switch userInfo.isUserAuthenticated {
+
+            case .undefined :
+                ProgressView()
+            case .signOut :
+                LoginView()
+            case .signIn :
+                MainMenuView()
+            }
             
         }
         .onAppear(perform: {

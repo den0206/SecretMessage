@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct SearchUserView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @StateObject var vm = SearchUserViewModel()
     
     var body: some View {
         
@@ -17,14 +19,27 @@ struct SearchUserView: View {
             HStack {
                 Button(action: {presentationMode.wrappedValue.dismiss()}) {
                     Image(systemName: "xmark")
-                        .padding(.leading)
-                    
                     
                 }
+                
+                SearchField(searchText: $vm.searchText, action: {vm.searchUser()})
+
             }
-            .padding(.top,7)
+            .padding()
             
             Divider()
+            
+            switch vm.status {
+            case .plane :
+                if vm.searchedUser == nil {
+                    Text("No User")
+                } else {
+                    DetailUserView(user: vm.searchedUser,type : .search)
+                }
+            default :
+                StatusView(status: vm.status, retryAction: {})
+            }
+           
             
             Spacer()
         }
@@ -45,7 +60,7 @@ struct SearchField : View {
         HStack {
             
             HStack {
-                TextField("Search", text: $searchText)
+                TextField("SearchID", text: $searchText)
                     .autocapitalization(.none)
                     .padding(.leading,24)
                     .onTapGesture {
@@ -96,6 +111,7 @@ struct SearchField : View {
         }
     }
 }
+
 
 
 struct SearchUserView_Previews: PreviewProvider {

@@ -21,8 +21,9 @@ struct SecretMessageApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainMenuView()
-.environmentObject(userInfo).environmentObject(network)
+            RootView()
+                .environmentObject(userInfo)
+                .environmentObject(network)
         }
     }
 }
