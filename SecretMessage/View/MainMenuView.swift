@@ -25,7 +25,10 @@ struct MainMenuView: View {
                 BlankView()
             }
             
-            MenuArea()
+            if userInfo.showMenu {
+                MenuArea()
+
+            }
         }
         .edgesIgnoringSafeArea(.all)
     }

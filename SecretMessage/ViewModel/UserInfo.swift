@@ -60,5 +60,6 @@ final class UserInfo : ObservableObject {
         
         self.selectMenuIndex = 0
         self.MSGPushNav = true
+ 
     }
 }
