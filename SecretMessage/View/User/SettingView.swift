@@ -15,7 +15,7 @@ struct SettingView: View {
         
         VStack {
             
-            DetailUserView(user: userInfo.user, primaryAction: {logOut()}, secoundryAction: {})
+            DetailUserView(vm: DetailUserViewModel(user: userInfo.user), primaryAction: {logOut()}, secoundryAction: {})
            
         }
     }

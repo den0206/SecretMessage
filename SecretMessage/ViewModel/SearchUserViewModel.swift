@@ -31,9 +31,9 @@ final class SearchUserViewModel : ObservableObject {
             
             self.searchText = ""
         }
-        
-        
+
     }
+    
     
     
 }

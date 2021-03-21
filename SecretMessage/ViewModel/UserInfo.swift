@@ -14,11 +14,18 @@ final class UserInfo : ObservableObject {
         case undefined,signOut,signIn
     }
     
+    
+    
     @Published var isUserAuthenticated : AuthState = .undefined
     @Published var listnerHandle : AuthStateDidChangeListenerHandle?
     @Published var user : FBUser = .init(uid : "", name : "", email : "", fcmToken: "", searchId: "")
     
     @Published var selectMenuIndex = 0
+    @Published var showMenu = true
+    
+    @Published var MSGPushNav = false
+    @Published var chatRoomId = ""
+    @Published var withUser : FBUser = .init(uid : "", name : "", email : "", fcmToken: "", searchId: "")
     
     func configureStateDidchange() {
         
@@ -44,5 +51,14 @@ final class UserInfo : ObservableObject {
             
         })
         
+    }
+    
+    func pushMessageView(chatRoomId : String, withUser : FBUser) {
+    
+        self.chatRoomId = chatRoomId
+        self.withUser = withUser
+        
+        self.selectMenuIndex = 0
+        self.MSGPushNav = true
     }
 }

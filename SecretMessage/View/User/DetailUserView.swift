@@ -14,10 +14,15 @@ struct DetailUserView : View {
         case search, profile
     }
     
-    var user : FBUser!
+    @EnvironmentObject var userInfo : UserInfo
+    @StateObject var vm : DetailUserViewModel
     
+    var user : FBUser {
+        return vm.user
+    }
+
     var type : DetailType = .profile
-    
+
     var primaryAction : (() -> Void?)? = nil
     var secoundryAction : (() -> Void?)? = nil
     
@@ -86,6 +91,8 @@ struct DetailUserView : View {
                 Button(action: {
                     if secoundryAction != nil {
                         secoundryAction!()
+                        vm.startPrivateChat(userInfo: userInfo)
+
                     }
                 }) {
                     Text("Message")

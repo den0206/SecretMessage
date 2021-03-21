@@ -29,12 +29,18 @@ struct SearchUserView: View {
             
             Divider()
             
+            Spacer()
+            
             switch vm.status {
             case .plane :
                 if vm.searchedUser == nil {
                     Text("No User")
                 } else {
-                    DetailUserView(user: vm.searchedUser,type : .search)
+                    DetailUserView(vm: DetailUserViewModel(user: vm.searchedUser!),type : .search,secoundryAction: {
+                        presentationMode.wrappedValue.dismiss()
+                        
+                        
+                    })
                 }
             default :
                 StatusView(status: vm.status, retryAction: {})
