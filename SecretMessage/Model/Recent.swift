@@ -18,7 +18,13 @@ struct  Recent : Identifiable {
     var withUserId : String
     var chatRoomId : String
     var lastMessage : String
-    var counter : Int
+    var counter : Int {
+        didSet {
+            if counter < 0 {
+                counter = 0
+            }
+        }
+    }
     var date : Timestamp
     
     var withUser : FBUser!
@@ -97,3 +103,50 @@ func createRecentFirestore(uid : String, currentUID : String, chatRoomId : Strin
     
     ref.setData(recent)
 }
+
+func updateRecentCounter(chatRoomID :String , lastMessage : String,withUser : FBUser, isDelete : Bool = false) {
+    
+    FirebaseReference(.Recent).whereField(RecentKey.chatRoomId, isEqualTo: chatRoomID).getDocuments { (snapshot, error) in
+        
+        guard let snapshot = snapshot else {return}
+        guard !snapshot.isEmpty else {return}
+    
+        snapshot.documents.forEach { (doc) in
+            let recent = Recent(dic: doc.data())
+            
+            updateRecentToFireStore(recent: recent, withUser: withUser, lastMessage: lastMessage,isDelete: isDelete)
+            
+        }
+        
+    }
+}
+
+func updateRecentToFireStore(recent : Recent, withUser : FBUser,lastMessage : String, isDelete : Bool = false) {
+    
+    let date = Timestamp(date: Date())
+    var counter = recent.counter
+    
+    let uid = recent.userId
+    
+    // except currentUser Counter
+    if uid == withUser.uid {
+        if !isDelete {
+            counter += 1
+        } else {
+            counter -= 1
+        }
+    }
+    
+    let values = [RecentKey.lastMessage : lastMessage,
+                  RecentKey.counter: counter,
+                  RecentKey.date : date] as [String : Any]
+    
+    FirebaseReference(.Recent).document(recent.id).updateData(values) { (error) in
+        
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+    }
+}
+

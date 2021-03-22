@@ -47,6 +47,7 @@ struct RecentsView: View {
             }
             .onAppear(perform: {
                 print("Appear")
+                vm.addListner()
                 vm.fetchRecents()
             })
             

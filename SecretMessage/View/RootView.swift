@@ -17,7 +17,7 @@ struct RootView: View {
             switch userInfo.isUserAuthenticated {
 
             case .undefined :
-                ProgressView()
+                GreenProgressView()
             case .signOut :
                 LoginView()
             case .signIn :

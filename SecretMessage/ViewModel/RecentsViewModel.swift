@@ -113,7 +113,7 @@ final class RecentsViewModel : ObservableObject {
                     switch diff.type {
                     
                     case .added:
-                        
+                        print("Add")
                         for i in 0 ..< self.recents.count {
                             
                             let tempRecent = self.recents[i]
