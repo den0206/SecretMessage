@@ -10,14 +10,22 @@ import SwiftUI
 struct SettingView: View {
     
     @EnvironmentObject var userInfo : UserInfo
+    @State private var pushNav : Bool = false
 
     var body: some View {
         
-        VStack {
-            
-            DetailUserView(vm: DetailUserViewModel(user: userInfo.user), primaryAction: {logOut()}, secoundryAction: {})
-           
+        NavigationView {
+            VStack {
+                NavigationLink(destination: FriendView(), isActive: $pushNav, label: {})
+                
+                DetailUserView(vm: DetailUserViewModel(user: userInfo.user), primaryAction: {logOut()}, secoundryAction: {pushNav.toggle()})
+               
+            }
         }
+        
+        .navigationBarHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+       
     }
     
     private func logOut() {

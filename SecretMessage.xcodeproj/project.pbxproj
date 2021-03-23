@@ -29,6 +29,7 @@
 		3AA1FED72606EDC7006CFBDD /* DetailUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1FED62606EDC7006CFBDD /* DetailUserViewModel.swift */; };
 		3AA1FEDA2606F36A006CFBDD /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1FED92606F36A006CFBDD /* MessageView.swift */; };
 		3AA1FEDD2606F8A0006CFBDD /* RecentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1FEDC2606F8A0006CFBDD /* RecentsViewModel.swift */; };
+		3AAB109E2609F94E00238721 /* FriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB109D2609F94E00238721 /* FriendView.swift */; };
 		3AB79FDB26070B0E00280BD5 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB79FDA26070B0E00280BD5 /* MessageViewModel.swift */; };
 		3AB79FDE2607102600280BD5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB79FDD2607102600280BD5 /* Message.swift */; };
 		3AB79FE1260712A800280BD5 /* EncodeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB79FE0260712A800280BD5 /* EncodeString.swift */; };
@@ -68,6 +69,7 @@
 		3AA1FED62606EDC7006CFBDD /* DetailUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserViewModel.swift; sourceTree = "<group>"; };
 		3AA1FED92606F36A006CFBDD /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		3AA1FEDC2606F8A0006CFBDD /* RecentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsViewModel.swift; sourceTree = "<group>"; };
+		3AAB109D2609F94E00238721 /* FriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendView.swift; sourceTree = "<group>"; };
 		3AB79FDA26070B0E00280BD5 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		3AB79FDD2607102600280BD5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		3AB79FE0260712A800280BD5 /* EncodeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodeString.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				3AC9B5452605CF0200D4BF35 /* SearchUserView.swift */,
 				3A1299ED260625C200F9DE9C /* DetailUserView.swift */,
 				3AF6F6832605D67800BA982B /* SettingView.swift */,
+				3AAB109D2609F94E00238721 /* FriendView.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				3AC9B5422605CE0500D4BF35 /* RecentsView.swift in Sources */,
 				3A19BDE8260583DF004FED17 /* FirebaseReference.swift in Sources */,
 				3A40F12E2604E8AB00FC662E /* GlobalExtensions.swift in Sources */,
+				3AAB109E2609F94E00238721 /* FriendView.swift in Sources */,
 				3AA1FEDA2606F36A006CFBDD /* MessageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

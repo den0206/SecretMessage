@@ -36,7 +36,7 @@ struct SearchUserView: View {
                 if vm.searchedUser == nil {
                     Text("No User")
                 } else {
-                    DetailUserView(vm: DetailUserViewModel(user: vm.searchedUser!),type : .search,secoundryAction: {
+                    DetailUserView(vm: DetailUserViewModel(user: vm.searchedUser!),type : .search,primaryAction: {vm.searchedUser?.isFriend.toggle()} ,secoundryAction: {
                         presentationMode.wrappedValue.dismiss()
                         
                         

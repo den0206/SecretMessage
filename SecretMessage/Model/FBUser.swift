@@ -18,6 +18,8 @@ struct FBUser {
     var fcmToken : String
     var searchId : String
     
+    var isFriend = false
+    
     var avatarUrl : URL?
     
     var isCurrentUser : Bool {

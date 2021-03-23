@@ -20,9 +20,9 @@ struct DetailUserView : View {
     var user : FBUser {
         return vm.user
     }
-
+    
     var type : DetailType = .profile
-
+    
     var primaryAction : (() -> Void?)? = nil
     var secoundryAction : (() -> Void?)? = nil
     
@@ -76,29 +76,40 @@ struct DetailUserView : View {
                     }
                 }
             }
-          
+            
         } else {
             HStack {
                 Button(action: {
                     if primaryAction != nil {
                         primaryAction!()
                     }
+                    
+                    vm.addFriend(userInfo: userInfo)
                 }) {
-                    Text("+ Friend")
-                        .modifier(ProfileButtonModifier(color: .blue))
+                    Text(vm.user.isFriend ? "- Friend" : "+ Friend")
+                        .modifier(ProfileButtonModifier(color: vm.user.isFriend ? .red : .blue))
                 }
+                .opacity(!vm.buttonEnable ? 0 : 1)
+                .disabled(!vm.buttonEnable)
+                .onAppear {
+                    print("get friend Status")
+                    vm.checkFriend(userInfo: userInfo)
+                    
+                }
+                
                 
                 Button(action: {
                     if secoundryAction != nil {
                         secoundryAction!()
                         vm.startPrivateChat(userInfo: userInfo)
-
+                        
                     }
                 }) {
                     Text("Message")
                         .modifier(ProfileButtonModifier(color: .green))
                 }
             }
+            
         }
     }
 }

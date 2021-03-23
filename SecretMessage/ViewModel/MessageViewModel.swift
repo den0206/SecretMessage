@@ -36,12 +36,11 @@ final class MessageViewModel : ObservableObject {
         guard !reachLast && !loading else {return}
         
         var ref : Query!
-        
-        loading = true
-        
+    
         if lastDoc == nil {
             ref = FirebaseReference(.Message).document(currentUser.uid).collection(chatRoomId).order(by: MessageKey.date, descending: true).limit(to: limit)
         } else {
+            loading = true
             
             ref = FirebaseReference(.Message).document(currentUser.uid).collection(chatRoomId).order(by: MessageKey.date, descending: true).start(afterDocument: self.lastDoc!).limit(to: self.limit)
         }
@@ -75,15 +74,12 @@ final class MessageViewModel : ObservableObject {
             
             if self.lastDoc == nil {
                 self.messages = snapshopt.documents.map({Message(dic: $0.data())}).reversed()
-                self.readMessage()
                 
                 self.addReadListner()
                 
                 self.lastDoc = snapshopt.documents.last
                 self.ListenNewChat()
-                
-                self.loading = false
-                
+                            
             } else {
                 /// more
                 
@@ -95,7 +91,6 @@ final class MessageViewModel : ObservableObject {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.messages.insert(contentsOf: moreMessage, at: 0)
-                    self.readMessage()
                     
                     self.loading = false
                 }
@@ -150,10 +145,10 @@ final class MessageViewModel : ObservableObject {
             let user = unread.0
             let message = unread.1
             
-            if !message.read {
-                FirebaseReference(.Message).document(user.uid).collection(chatRoomId).document(message.id).updateData(value)
-                
-                guard let index = self.messages.firstIndex(of: message) else {return}
+            
+            FirebaseReference(.Message).document(user.uid).collection(chatRoomId).document(message.id).updateData(value)
+            
+            if let index = self.messages.firstIndex(of: message) {
                 self.messages[index].read = true
                 
             }
@@ -168,6 +163,10 @@ final class MessageViewModel : ObservableObject {
             
             users.forEach { (user) in
                 FirebaseReference(.Message).document(user.uid).collection(chatRoomId).document(message.id).updateData(value)
+            }
+            
+            if let i = self.messages.firstIndex(of: message) {
+                self.messages[i].read = true
             }
             
         }

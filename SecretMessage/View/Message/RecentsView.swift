@@ -13,6 +13,7 @@ struct RecentsView: View {
     @EnvironmentObject var userInfo : UserInfo
     @StateObject var vm = RecentsViewModel()
     @State private var showSheet = false
+    @State private var firstLoad = true
     
     var body: some View {
         
@@ -47,7 +48,11 @@ struct RecentsView: View {
             }
             .onAppear(perform: {
                 print("Appear")
-                vm.addListner()
+                
+                if firstLoad {
+                    vm.addListner()
+                    firstLoad = false
+                }
                 vm.fetchRecents()
             })
             

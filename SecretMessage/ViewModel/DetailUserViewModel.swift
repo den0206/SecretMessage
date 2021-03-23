@@ -5,12 +5,13 @@
 //  Created by 酒井ゆうき on 2021/03/21.
 //
 
-import Combine
+import SwiftUI
 import Foundation
 
 final class DetailUserViewModel : ObservableObject {
     
-    var user : FBUser
+    @Published var user : FBUser
+    @Published var buttonEnable : Bool = false
     
     init(user : FBUser) {
         self.user = user
@@ -26,6 +27,53 @@ final class DetailUserViewModel : ObservableObject {
             
             userInfo.pushMessageView(chatRoomId: chatRoomId, withUser: self.user)
         }
+    }
+    
+    
+    func checkFriend(userInfo : UserInfo) {
+        guard !user.isCurrentUser else {return}
+        let currentUser = userInfo.user
+
+        FBCommon.checkFriend(currentUser: currentUser, withUser: user) { (isFriend) in
+            
+            self.user.isFriend = isFriend
+            
+            withAnimation(.easeInOut(duration: 0.7)) {
+                self.buttonEnable = true
+            }
+        }
+    }
+    func addFriend(userInfo : UserInfo) {
+        guard !user.isCurrentUser else {return}
+        
+        let currentUser = userInfo.user
+        
+        switch user.isFriend {
+        
+        case false:
+            FBCommon.addFriend(currentUser: currentUser, withUser: user) { (error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+        
+                self.user.isFriend = true
+                
+            }
+        case true:
+            FBCommon.removeFriend(currentUser: currentUser, withUser: user) { (error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+        
+                self.user.isFriend = false
+                
+            }
+        }
+        
+        
+        
     }
    
 }
