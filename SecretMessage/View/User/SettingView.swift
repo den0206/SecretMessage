@@ -11,14 +11,18 @@ struct SettingView: View {
     
     @EnvironmentObject var userInfo : UserInfo
     @State private var pushNav : Bool = false
-
+    @State private var showAlert = false
+    
     var body: some View {
         
         NavigationView {
             VStack {
-                NavigationLink(destination: FriendView(), isActive: $pushNav, label: {})
+                NavigationLink(destination: FriendView(vm: FriendViewModel(user: userInfo.user)), isActive: $pushNav, label: {})
                 
-                DetailUserView(vm: DetailUserViewModel(user: userInfo.user), primaryAction: {logOut()}, secoundryAction: {pushNav.toggle()})
+                DetailUserView(vm: DetailUserViewModel(user: userInfo.user), primaryAction: {showAlert.toggle()}, secoundryAction: {pushNav.toggle()})
+                    .alert(isPresented: $showAlert, content: {
+                        Alert(title: Text("ログアウトしますか?"), primaryButton: .cancel(), secondaryButton: .destructive(Text("ログアウト"), action: {logOut()}))
+                    })
                
             }
         }
@@ -27,6 +31,7 @@ struct SettingView: View {
         .navigationBarTitleDisplayMode(.inline)
        
     }
+    
     
     private func logOut() {
         FBAuth.logOut { (result) in

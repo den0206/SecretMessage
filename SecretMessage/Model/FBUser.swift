@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-struct FBUser {
+struct FBUser : Equatable{
     
     typealias UserDic = [String : Any]
     

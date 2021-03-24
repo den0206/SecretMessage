@@ -20,6 +20,7 @@
 		3A19BDEB26058427004FED17 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A19BDEA26058427004FED17 /* CustomError.swift */; };
 		3A40F12A2604E52C00FC662E /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40F1292604E52C00FC662E /* CustomView.swift */; };
 		3A40F12E2604E8AB00FC662E /* GlobalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40F12D2604E8AB00FC662E /* GlobalExtensions.swift */; };
+		3A603A87260ABD8D0005B8A7 /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A603A86260ABD8D0005B8A7 /* FriendViewModel.swift */; };
 		3A893A262604E206000FF591 /* SecretMessageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A893A252604E206000FF591 /* SecretMessageApp.swift */; };
 		3A893A2A2604E208000FF591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A893A292604E208000FF591 /* Assets.xcassets */; };
 		3A893A2D2604E208000FF591 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A893A2C2604E208000FF591 /* Preview Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		3A19BDEA26058427004FED17 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		3A40F1292604E52C00FC662E /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		3A40F12D2604E8AB00FC662E /* GlobalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtensions.swift; sourceTree = "<group>"; };
+		3A603A86260ABD8D0005B8A7 /* FriendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewModel.swift; sourceTree = "<group>"; };
 		3A893A222604E206000FF591 /* SecretMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecretMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A893A252604E206000FF591 /* SecretMessageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretMessageApp.swift; sourceTree = "<group>"; };
 		3A893A292604E208000FF591 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				3AA1FED62606EDC7006CFBDD /* DetailUserViewModel.swift */,
 				3AA1FEDC2606F8A0006CFBDD /* RecentsViewModel.swift */,
 				3AB79FDA26070B0E00280BD5 /* MessageViewModel.swift */,
+				3A603A86260ABD8D0005B8A7 /* FriendViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				3A19BDE026058163004FED17 /* Constracts.swift in Sources */,
 				3AC5F07426059B6C009B2CEF /* NWPathMonitor+.swift in Sources */,
 				3AA1FED72606EDC7006CFBDD /* DetailUserViewModel.swift in Sources */,
+				3A603A87260ABD8D0005B8A7 /* FriendViewModel.swift in Sources */,
 				3A893A3A2604E26A000FF591 /* LoginView.swift in Sources */,
 				3AB79FDE2607102600280BD5 /* Message.swift in Sources */,
 				3AC5F06D2605905C009B2CEF /* FBAuth.swift in Sources */,
